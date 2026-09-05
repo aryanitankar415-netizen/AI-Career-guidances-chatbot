@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+    {% block title %}
+    AI Career Guidance Chatbot
+    {% endblock %}
+  </title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}"
+  >
+</head>
+
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar">
+
+  <!-- LOGO -->
+
+  <a
+    class="brand"
+    href="{{ url_for('index') }}"
+  >
+    <span class="brand-icon">✦</span>
+    Career<span>Guide AI</span>
+  </a>
+
+
+  <!-- MOBILE MENU -->
+
+  <button
+    class="menu-btn"
+    onclick="document.querySelector('.nav-links').classList.toggle('show')"
+  >
+    ☰
+  </button>
+
+
+  <!-- NAVIGATION -->
+
+  <nav class="nav-links">
+
+    <a href="{{ url_for('index') }}">
+      Home
+    </a>
+
+    <a href="{{ url_for('careers') }}">
+      Careers
+    </a>
+
+    <a href="{{ url_for('roadmaps') }}">
+      Roadmaps
+    </a>
+
+    <a href="{{ url_for('about') }}">
+      About
+    </a>
+
+
+    <!-- =====================================================
+         USER LOGGED IN
+    ====================================================== -->
+
+    {% if session.get('user_id') %}
+
+      <span class="nav-user">
+        👋 Hi, {{ session.get('user_name') }}
+      </span>
+
+      <a
+        href="{{ url_for('logout') }}"
+        class="logout-link"
+      >
+        Logout
+      </a>
+
+      <a
+        href="{{ url_for('chat') }}"
+        class="btn"
+      >
+        Chat Now
+      </a>
+
+
+    <!-- =====================================================
+         USER NOT LOGGED IN
+    ====================================================== -->
+
+    {% else %}
+
+      <a href="{{ url_for('login') }}">
+        Login
+      </a>
+
+      <a
+        href="{{ url_for('chat') }}"
+        class="btn"
+      >
+        Chat Now
+      </a>
+
+    {% endif %}
+
+  </nav>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main>
+
+  {% block content %}
+  {% endblock %}
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+  <div>
+    <b>CareerGuide AI</b>
+    — Your smart career companion.
+  </div>
+
+  <div>
+    Built with Flask • SQLite • Gemini AI
+  </div>
+
+</footer>
+
+
+<!-- =========================================================
+     MAIN JAVASCRIPT
+========================================================= -->
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+{% block scripts %}
+{% endblock %}
+
+
+</body>
+</html>
