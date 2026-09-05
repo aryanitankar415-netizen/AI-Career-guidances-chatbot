@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Careers — CareerGuide{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="eyebrow">CAREER DIRECTORY</div>
+  <h1>Explore your possibilities.</h1>
+  <p>
+    Compare popular technology careers and discover the skills,
+    tools and projects you can start learning today.
+  </p>
+</section>
+
+<section class="section">
+
+  <div class="career-grid big">
+
+    {% for c in careers %}
+
+    <article class="career-card detailed">
+
+      <!-- Career Icon -->
+      <div class="career-icon">
+        {{ c.icon }}
+      </div>
+
+      <!-- Title + Demand -->
+      <div class="career-title-row">
+        <h2>{{ c.title }}</h2>
+        <span class="tag">{{ c.demand }}</span>
+      </div>
+
+      <!-- Short Description -->
+      <p>{{ c.description }}</p>
+
+      <!-- Basic Details -->
+      <div class="details">
+
+        <b>Skills</b>
+        <span>{{ c.skills }}</span>
+
+        <b>Typical Salary</b>
+        <span>{{ c.salary }}</span>
+
+      </div>
+
+      <!-- Career Overview -->
+      {% if c.overview %}
+      <div class="career-info">
+        <h3>📖 Career Overview</h3>
+        <p>{{ c.overview }}</p>
+      </div>
+      {% endif %}
+
+      <!-- What You Do -->
+      {% if c.what_you_do %}
+      <div class="career-info">
+        <h3>💼 What You Do</h3>
+        <p>{{ c.what_you_do }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Tools -->
+      {% if c.tools %}
+      <div class="career-info">
+        <h3>🛠️ Tools & Technologies</h3>
+        <p>{{ c.tools }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Beginner Projects -->
+      {% if c.beginner_projects %}
+      <div class="career-info">
+        <h3>🚀 Beginner Projects</h3>
+        <p>{{ c.beginner_projects }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Advanced Projects -->
+      {% if c.advanced_projects %}
+      <div class="career-info">
+        <h3>🔥 Advanced Projects</h3>
+        <p>{{ c.advanced_projects }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Suitable For -->
+      {% if c.suitable_for %}
+      <div class="career-info">
+        <h3>🎯 Suitable For</h3>
+        <p>{{ c.suitable_for }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Future Scope -->
+      {% if c.future_scope %}
+      <div class="career-info">
+        <h3>🔮 Future Scope</h3>
+        <p>{{ c.future_scope }}</p>
+      </div>
+      {% endif %}
+
+      <!-- AI Button -->
+      <a class="btn small" href="{{ url_for('chat') }}">
+        Ask AI about this career →
+      </a>
+
+    </article>
+
+    {% endfor %}
+
+  </div>
+
+</section>
+
+{% endblock %}

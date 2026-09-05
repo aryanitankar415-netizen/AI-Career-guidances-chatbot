@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Roadmaps — CareerGuide{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="eyebrow">CAREER ROADMAPS</div>
+
+  <h1>Build your career step by step.</h1>
+
+  <p>
+    Follow structured learning roadmaps for technology careers.
+    Start from the basics and gradually build the skills, projects
+    and experience needed for your target career.
+  </p>
+</section>
+
+
+<section class="section">
+
+  <div class="roadmap-grid">
+
+    {% for career, stages in roadmaps.items() %}
+
+    <article class="roadmap-card">
+
+      <!-- CAREER HEADER -->
+      <div class="roadmap-header">
+
+        <div class="roadmap-icon">
+
+          {% if career == "Web Developer" %}
+            🌐
+          {% elif career == "Software Engineer" %}
+            💻
+          {% elif career == "Data Analyst" %}
+            📊
+          {% elif career == "Data Scientist" %}
+            📈
+          {% elif career == "Machine Learning Engineer" %}
+            🤖
+          {% elif career == "Generative AI Engineer" %}
+            ✨
+          {% elif career == "AI Research Scientist" %}
+            🧠
+          {% elif career == "Cybersecurity Analyst" %}
+            🔐
+          {% elif career == "Ethical Hacker" %}
+            🛡️
+          {% elif career == "Cloud Engineer" %}
+            ☁️
+          {% elif career == "DevOps Engineer" %}
+            ⚙️
+          {% elif career == "UI/UX Designer" %}
+            🎨
+          {% elif career == "Mobile App Developer" %}
+            📱
+          {% elif career == "Database Administrator" %}
+            🗄️
+          {% elif career == "Blockchain Developer" %}
+            ⛓️
+          {% elif career == "Game Developer" %}
+            🎮
+          {% elif career == "Product Manager" %}
+            🚀
+          {% else %}
+            🎯
+          {% endif %}
+
+        </div>
+
+        <div>
+          <h2>{{ career }}</h2>
+
+          <span class="tag">
+            {{ stages|length }} Stages
+          </span>
+        </div>
+
+      </div>
+
+
+      <!-- ROADMAP STAGES -->
+
+      <div class="roadmap-timeline">
+
+        {% for stage in stages %}
+
+        <div class="roadmap-stage">
+
+          <div class="stage-number">
+            {{ loop.index }}
+          </div>
+
+          <div class="stage-content">
+            <p>{{ stage }}</p>
+          </div>
+
+        </div>
+
+        {% endfor %}
+
+      </div>
+
+
+      <!-- ASK AI BUTTON -->
+
+      <a
+        href="{{ url_for('chat') }}"
+        class="btn small roadmap-btn"
+      >
+        Ask AI about this roadmap →
+      </a>
+
+    </article>
+
+    {% endfor %}
+
+  </div>
+
+</section>
+
+{% endblock %}
