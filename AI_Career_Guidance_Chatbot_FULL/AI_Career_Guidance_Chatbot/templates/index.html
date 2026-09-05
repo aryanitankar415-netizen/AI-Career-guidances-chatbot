@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}AI Career Guidance Chatbot{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <div class="pill">🤖 AI-POWERED CAREER GUIDANCE</div>
+    <h1>Build a career path that <span>fits you.</span></h1>
+    <p>Ask about careers, skills, courses, projects, salaries, roadmaps and interviews. Get practical guidance from your AI career companion.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="{{ url_for('chat') }}">Start Chatting →</a>
+      <a class="btn secondary" href="{{ url_for('careers') }}">Explore Careers</a>
+    </div>
+    <div class="stats"><div><b>24/7</b><small>AI guidance</small></div><div><b>16+</b><small>career paths</small></div><div><b>100%</b><small>student focused</small></div></div>
+  </div>
+  <div class="robot-card"><div class="glow"></div><div class="robot">🤖</div><div class="bubble">Hi! I'm CareerGuide AI.<br>How can I help you today?</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><div class="eyebrow">WHY USE IT?</div><h2>Everything you need to plan your future</h2></div></div>
+  <div class="feature-grid">
+    <div class="feature"><span>🎯</span><h3>Personalized Guidance</h3><p>Get suggestions based on your interests, skills, education and goals.</p></div>
+    <div class="feature"><span>💼</span><h3>Explore Careers</h3><p>Understand roles, skills, demand and realistic learning paths.</p></div>
+    <div class="feature"><span>🗺️</span><h3>Learning Roadmaps</h3><p>Follow clear step-by-step roadmaps from beginner to job-ready.</p></div>
+    <div class="feature"><span>📝</span><h3>Interview & Resume</h3><p>Practice interview questions and improve your career profile.</p></div>
+  </div>
+</section>
+
+<section class="section light">
+  <div class="section-head"><div><div class="eyebrow">POPULAR PATHS</div><h2>Explore career options</h2></div><a class="text-link" href="{{ url_for('careers') }}">View all →</a></div>
+  <div class="career-grid">
+    {% for c in careers %}
+    <div class="career-card"><div class="career-icon">{{ c.icon }}</div><h3>{{ c.title }}</h3><span class="tag">{{ c.demand }}</span><p>{{ c.description }}</p><a href="{{ url_for('chat') }}">Ask AI →</a></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="cta"><div><div class="eyebrow">READY TO START?</div><h2>Your next career decision starts with one question.</h2><p>Tell the chatbot what you are studying and what you enjoy.</p></div><a class="btn primary" href="{{ url_for('chat') }}">Talk to CareerGuide AI →</a></section>
+{% endblock %}

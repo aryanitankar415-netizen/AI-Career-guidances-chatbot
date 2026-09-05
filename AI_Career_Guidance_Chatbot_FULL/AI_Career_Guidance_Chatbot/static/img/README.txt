@@ -1,0 +1,1 @@
+Place optional custom project images here. The UI uses emoji/CSS illustrations so no external image files are required.

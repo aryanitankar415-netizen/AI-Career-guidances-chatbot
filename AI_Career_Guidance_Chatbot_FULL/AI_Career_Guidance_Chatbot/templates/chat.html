@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}AI Chat — CareerGuide{% endblock %}
+{% block content %}
+<section class="chat-page">
+  <div class="chat-shell">
+    <aside class="chat-sidebar">
+      <button class="new-chat" onclick="clearChat()">＋ New Chat</button>
+      <div class="side-title">Quick prompts</div>
+      <button class="prompt" onclick="usePrompt('What career is best for me?')">🎯 What career is best for me?</button>
+      <button class="prompt" onclick="usePrompt('Give me a roadmap to become a web developer')">💻 Web developer roadmap</button>
+      <button class="prompt" onclick="usePrompt('What skills are required for data science?')">📊 Data science skills</button>
+      <button class="prompt" onclick="usePrompt('How should I prepare for a software interview?')">📝 Interview preparation</button>
+      <div class="login-note">{% if current_user %}<b>{{ current_user }}</b><br>Your chat history is saved in SQLite.{% else %}Login to save your chat history.{% endif %}</div>
+    </aside>
+    <section class="chat-window">
+      <div class="chat-top"><div><h2>✦ AI Career Guide</h2><p>Ask anything about your career</p></div><button onclick="clearChat()">Clear</button></div>
+      <div id="messages" class="messages">
+        <div class="message assistant"><div class="avatar">🤖</div><div><b>CareerGuide AI</b><p>Hello! 👋 Tell me your degree, year, skills, interests or career goal. I'll help you create a practical career plan.</p></div></div>
+      </div>
+      <div class="typing" id="typing">CareerGuide AI is thinking…</div>
+      <form id="chatForm" class="chat-form">
+        <input id="messageInput" autocomplete="off" placeholder="Type your career question..." required>
+        <button type="submit">➤</button>
+      </form>
+      <div class="disclaimer">AI guidance is educational. Verify important career, course, salary and employment information independently.</div>
+    </section>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/chat.js') }}"></script>{% endblock %}
