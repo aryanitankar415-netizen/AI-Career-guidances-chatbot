@@ -2,4 +2,4 @@
 2  python-dotenv>=1.1,<2
 3  Werkzeug>=3.1,<4
 4  google-genai>=1.30,<2
-5  psycopg[binary]>=3.2,<4
+5  psycopg==3.2.4
